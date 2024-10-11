@@ -2,7 +2,7 @@
 /* eslint-disable no-await-in-loop */
 import fs from 'fs';
 import path from 'path';
-import moment from 'moment';
+import Moment from 'moment';
 import sqliteDriver from './drivers/sqlite/index.js';
 import serverDirname from './server-dirname.cjs';
 
