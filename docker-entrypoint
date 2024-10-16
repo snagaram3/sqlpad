@@ -7,4 +7,8 @@ if [ -d "/etc/docker-entrypoint.d" ]; then
         . "$file"
     done < <(find /etc/docker-entrypoint.d -maxdepth 1 -name '*.sh' -type f  -print0)
 fi
+#Run sqlpad as non-root user
+    sed -i '/^root:x:0:0:root:\/root:\/bin\/bash$/d' /etc/passwd \                          
+        && echo "sqlpad:x:10000:10000:sqlpad User:/home/sqlpad:/bin/sh" >> /etc/passwd
+  
 exec node /usr/app/server.js $@
